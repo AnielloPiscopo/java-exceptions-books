@@ -11,16 +11,21 @@ public class Main {
 	
 	public static void main(String[] args) throws Exception {
 		Scanner in = new Scanner(System.in);
+		
+		
 		int numOfBooks = getAIntNumberFromUser(in);
 		Book[] books = new Book[numOfBooks];
 		if(numOfBooks > 0) createBooks(numOfBooks , in , books);
+		
+		
 		createAndCompileFileWithBooks(books, numOfBooks);
 		printFileText();
+		
+		
 		in.close();
 	}
 	
 	public static int getAIntNumberFromUser(Scanner in) {
-		
 		int num = 0;
 		
 		try {
@@ -30,8 +35,7 @@ public class Main {
 		}catch(Exception e) {
 			System.err.println("Errore: " + e.getMessage());
 		}
-		
-		
+
 		return num;
 	}
 	
@@ -71,6 +75,7 @@ public class Main {
 				Book book = books[i];
 				myWriter.write(book.toString());
 			} 
+			
 			myWriter.close();
 		}catch(Exception e) {
 			System.err.println("Errore " + e.getMessage());
@@ -80,9 +85,11 @@ public class Main {
 	public static void printFileText() throws FileNotFoundException {
 		File file = new File(FILENAME);
 		Scanner reader = new Scanner(file);
+		
 		while(reader.hasNextLine()) {
 			System.out.println(reader.nextLine());
 		}
+		
 		reader.close();
 	}
 	
