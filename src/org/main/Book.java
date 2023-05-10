@@ -56,6 +56,7 @@ public class Book {
 	
 	protected String getInfo() {
 		return "\nTitolo: " + getTitle()
+			+ "\nNumero di pagine: " + getNumOfPages()
 			+ "\nAutore: " + getAuthor()
 			+ "\nEditor: " + getEditor()
 			+ "\n";
