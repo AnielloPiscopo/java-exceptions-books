@@ -69,6 +69,7 @@ public class Main {
 		while(reader.hasNextLine()) {
 			System.out.println(reader.nextLine());
 		}
+		reader.close();
 		in.close();
 	}
 	
