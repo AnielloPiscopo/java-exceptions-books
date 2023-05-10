@@ -62,6 +62,8 @@ public class Main {
 			}
 			
 			System.out.println(Arrays.toString(books));
+		}catch(IndexOutOfBoundsException e){
+			System.err.println("Errore: ");
 		}catch(Exception e) {
 			System.err.println("Errore: ");
 		}
@@ -77,6 +79,8 @@ public class Main {
 			} 
 			
 			myWriter.close();
+		}catch(IndexOutOfBoundsException e){
+			System.err.println("Errore: ");
 		}catch(Exception e) {
 			System.err.println("Errore " + e.getMessage());
 		}
