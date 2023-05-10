@@ -1,10 +1,17 @@
 package org.main;
 
-public class Libro {
+public class Book {
 	private String title;
 	private int numOfPages;
 	private String author;
 	private String editor;
+	
+	public Book(String title , int numOfPages , String author , String editor) {
+		setTitle(title);
+		setNumOfPages(numOfPages);
+		setAuthor(author);
+		setEditor(editor);
+	}
 	
 	
 	public String getTitle() {
@@ -45,9 +52,10 @@ public class Libro {
 	
 	
 	protected String getInfo() {
-		return "Titolo: " + getTitle()
-			+ "Autore: " + getAuthor()
-			+ "Editor: " + getEditor();
+		return "\nTitolo: " + getTitle()
+			+ "\nAutore: " + getAuthor()
+			+ "\nEditor: " + getEditor()
+			+ "\n";
 	}
 	
 	
