@@ -46,7 +46,7 @@ public class Main {
 				
 			}catch(IndexOutOfBoundsException e){
 				i--;
-				System.err.println("Errore: " + e.getMessage());
+				System.err.println("Errore negli indici: " + e.getMessage());
 			}catch(Exception e) {
 				i--;
 				System.err.println("Errore: " + e.getMessage());
@@ -67,9 +67,9 @@ public class Main {
 			
 			myWriter.close();
 		}catch(IndexOutOfBoundsException e){
-			System.err.println("Errore: ");
+			System.err.println("Errore negli indici: ");
 		}catch(Exception e) {
-			System.err.println("Errore " + e.getMessage());
+			System.err.println("Errore: " + e.getMessage());
 		}
 	}
 }
