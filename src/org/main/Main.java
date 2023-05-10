@@ -23,28 +23,34 @@ public class Main {
 		}
 		
 		Book[] books = new Book[numOfBooks];
-		
-		for(int i=0 ; i<numOfBooks ; i++) {
-			System.out.println("--------------------------");
+		try {
 			
-			System.out.print("Inserisci il nome del libro ");
-			String bookName = in.next();
+			for(int i=0 ; i<numOfBooks ; i++) {
+				System.out.println("--------------------------");
+				
+				System.out.print("Inserisci il nome del libro ");
+				String bookName = in.next();
+				
+				System.out.print("Inserisci il numero di pagine ");
+				int bookNumOfPages = in.nextInt();
+				
+				System.out.print("Inserisci il nome dell'autore ");
+				String bookAuthor = in.next();
+				
+				System.out.print("Inserisci il nome dell'editore ");
+				String bookEditor = in.next();
+				
+				Book book = new Book(bookName , bookNumOfPages , bookAuthor , bookEditor);
+				
+				books[i] = book;
+				
+			}
+			System.out.println(Arrays.toString(books));
 			
-			System.out.print("Inserisci il numero di pagine ");
-			int bookNumOfPages = in.nextInt();
-			
-			System.out.print("Inserisci il nome dell'autore ");
-			String bookAuthor = in.next();
-			
-			System.out.print("Inserisci il nome dell'editore ");
-			String bookEditor = in.next();
-			
-			Book book = new Book(bookName , bookNumOfPages , bookAuthor , bookEditor);
-			
-			books[i] = book;
-			
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
 		}
-		System.out.println(Arrays.toString(books));
+		
 		
 		try {
 			FileWriter myWriter = new FileWriter(FILENAME);
