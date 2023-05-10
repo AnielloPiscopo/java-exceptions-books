@@ -1,7 +1,6 @@
 package org.main;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import org.utilities.*;
 import java.io.FileWriter;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -13,60 +12,48 @@ public class Main {
 		Scanner in = new Scanner(System.in);
 		
 		
-		int numOfBooks = getAIntNumberFromUser(in);
+		int numOfBooks = Utilities.getAIntNumberFromUser(in);
 		Book[] books = new Book[numOfBooks];
 		if(numOfBooks > 0) createBooks(numOfBooks , in , books);
 		
 		
 		createAndCompileFileWithBooks(books, numOfBooks);
-		printFileText();
+		Utilities.printFileText(FILENAME);
 		
 		
 		in.close();
 	}
 	
-	public static int getAIntNumberFromUser(Scanner in) {
-		int num = 0;
-		
-		try {
-			System.out.print("Quanti libri vuoi inserire? ");
-			num = in.nextInt();
-			if(num<=0) throw new Exception("Devi inserire un numero maggiore di 0");
-		}catch(Exception e) {
-			System.err.println("Errore: " + e.getMessage());
-		}
-
-		return num;
-	}
-	
 	public static void createBooks(int num , Scanner in , Book[] books) throws Exception {
-		try {	
-			for(int i=0 ; i<num ; i++) {
-				System.out.println("--------------------------");
-				
-				System.out.print("Inserisci il nome del libro ");
-				String bookName = in.next();
-				
-				System.out.print("Inserisci il numero di pagine ");
-				int bookNumOfPages = in.nextInt();
-				
-				System.out.print("Inserisci il nome dell'autore ");
-				String bookAuthor = in.next();
-				
-				System.out.print("Inserisci il nome dell'editore ");
-				String bookEditor = in.next();
-				
-				Book book = new Book(bookName , bookNumOfPages , bookAuthor , bookEditor);
-				
-				books[i] = book;	
-			}
+		for(int i=0 ; i<num ; i++) {
+			System.out.println("--------------------------");
 			
-			System.out.println(Arrays.toString(books));
-		}catch(IndexOutOfBoundsException e){
-			System.err.println("Errore: ");
-		}catch(Exception e) {
-			System.err.println("Errore: ");
+			System.out.print("Inserisci il nome del libro ");
+			String bookName = in.next();
+			
+			System.out.print("Inserisci il numero di pagine ");
+			int bookNumOfPages = in.nextInt();
+			
+			System.out.print("Inserisci il nome dell'autore ");
+			String bookAuthor = in.next();
+			
+			System.out.print("Inserisci il nome dell'editore ");
+			String bookEditor = in.next();
+			
+			try {	
+				Book book = new Book(bookName , bookNumOfPages , bookAuthor , bookEditor);	
+				books[i] = book;	
+				
+			}catch(IndexOutOfBoundsException e){
+				i--;
+				System.err.println("Errore: " + e.getMessage());
+			}catch(Exception e) {
+				i--;
+				System.err.println("Errore: " + e.getMessage());
+			}
 		}
+		
+		System.out.println(Arrays.toString(books));
 	}
 	
 	public static void createAndCompileFileWithBooks(Book[] books , int numOfBooks) {
@@ -85,16 +72,4 @@ public class Main {
 			System.err.println("Errore " + e.getMessage());
 		}
 	}
-	
-	public static void printFileText() throws FileNotFoundException {
-		File file = new File(FILENAME);
-		Scanner reader = new Scanner(file);
-		
-		while(reader.hasNextLine()) {
-			System.out.println(reader.nextLine());
-		}
-		
-		reader.close();
-	}
-	
 }
