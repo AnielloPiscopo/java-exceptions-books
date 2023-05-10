@@ -48,7 +48,8 @@ public class Book {
 		return editor;
 	}
 	
-	public void setEditor(String editor) {
+	public void setEditor(String editor) throws Exception {
+		if(editor == "") throw new Exception("Non hai inserito un editor");
 		this.editor = editor;
 	}
 	
